@@ -10,15 +10,19 @@ function Avatar(props){
         />
     )
 }
+function UserInfo(props){
+    return (
+        <div className="UserInfo">
+            <Avatar {...props}/>
+            <div className="UserInfo-name">
+                {props.name}
+            </div>
+        </div>
+    )
+}
 function Comment(props) {
     return (
         <div className="Comment">
-            <div className="UserInfo">
-                <Avatar {...props.author}/>
-                <div className="UserInfo-name">
-                    {props.author.name}
-                </div>
-            </div>
             <UserInfo {...props.author}/>
             <div className="Comment-text">
                 {props.text}
