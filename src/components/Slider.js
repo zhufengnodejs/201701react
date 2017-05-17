@@ -5,7 +5,14 @@ export default class Slider extends React.Component{
         return (
             <div className="wrapper">
                 <ul className="sliders">
-                    <li><img src={this.props.images[0].src} alt={this.props.images[0].alt}/></li>
+                    {
+                        this.props.images.map((image,index)=>(
+                            <li key={index}>
+                                <img src={image.src} alt={image.alt}/>
+                            </li>
+                        ))
+                    }
+
                 </ul>
             </div>
         )
