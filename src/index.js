@@ -1,14 +1,9 @@
-/*import React from 'react';
-import ReactDOM from 'react-dom';*/
-//let hello = (<h1 className="green">hello</h1>);
-/// 经过了babel的转义
-function createElement(type,attrs,children){
-  return {type,attrs,children}
-}
-let hello = createElement('h1',{className:'green'},'hello');
-function render(ele,container){
-  let dom = document.createElement(ele.type);
-  dom.innerHTML = ele.children;
-  container.appendChild(dom);
-}
-render(hello,document.querySelector('#root'));
+import Panel from  './Panel.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
+//  {name:"zfpx",age:"9"}
+//自己实现一个面板组件
+ReactDOM.render(<Panel type="danger" head="头" body="体" footer="尾"></Panel>,document.getElementById('root'));
+
+
+
