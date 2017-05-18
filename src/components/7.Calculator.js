@@ -1,5 +1,7 @@
 import React from 'react';
 //每个表单元素的值是受组件状态的控制
+// 10 8 16
+// 10
 export default class Calculator extends React.Component{
     constructor(props){
         super(props);
