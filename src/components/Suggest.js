@@ -13,6 +13,7 @@ export default class Suggest extends React.Component {
 
     handleChange = (event) => {
         let wd = event.target.value;
+        this.wd = wd;
         this.setState({wd});
         // 1.success
         $.ajax({
@@ -35,8 +36,14 @@ export default class Suggest extends React.Component {
             let pos = this.state.pos;
             if(code == 38){//向上
                 pos--;
+                if(pos == -2){
+                    pos = this.state.words.length -1;
+                }
             }else if(code == 40){//向下
                 pos++;
+                if(pos == this.state.words.length){
+                    pos = -1;
+                }
             }
             this.setState({pos,wd:this.state.words[pos]});
         }
@@ -46,7 +53,7 @@ export default class Suggest extends React.Component {
             <div style={{marginTop: 30}} className="container">
                 <div className="row">
                     <div className="col-md-6 col-md-offset-3">
-                        <input type="text" className="form-control" value={this.state.wd} onKeyDown={this.handleKeyDown} onChange={this.handleChange}/>
+                        <input type="text" className="form-control" value={this.state.pos ==-1?this.wd:this.state.wd} onKeyDown={this.handleKeyDown} onChange={this.handleChange}/>
                     </div>
                 </div>
                 <div className="row">
