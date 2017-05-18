@@ -3,16 +3,13 @@ import ReactDOM from 'react-dom';
 export default class Calculator extends React.Component{
     constructor(props){
         super(props);
-        this.state = {result:0};
     }
     handleChange=()=>{
         console.log(this.refs);//{numA:numA真实DOM}
         let numA = this.numA.value;//可以得到真实的DOM元素
         let op = this.refs.op.value;
         let numB = this.refs.numB.value;
-        this.setState({
-            result:eval(numA+op+numB)
-        });
+        this.refs.result.innerText = eval(numA+op+numB)
     }
     render(){
         //ref如果指向的是一个箭头函数，那么当这个虚拟DOM元素被挂载到页面中之后就会立刻执行,形参里的ref指的是真实的DOM元素
@@ -21,7 +18,7 @@ export default class Calculator extends React.Component{
                 <input ref={ref=>this.numA = ref} onChange={this.handleChange} style={{width:40}} type="text" defaultValue={0}/>
                 <input ref="op" onChange={this.handleChange}  style={{width:30}} type="text" defaultValue="+"/>
                 <input ref="numB"  onChange={this.handleChange}  style={{width:40}} type="text" defaultValue={0}/>=
-                <span>{this.state.result}</span>
+                <span ref="result"></span>
             </div>
         )
     }
