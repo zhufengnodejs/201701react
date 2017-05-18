@@ -1,1 +1,1 @@
-import './components/3.component'
+import './components/4.children'

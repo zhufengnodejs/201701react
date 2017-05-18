@@ -26,6 +26,14 @@ class Person extends React.Component{
         //这种给状态赋值的方式只能在构造函数中初始的时候用
         this.state = {happy:true};
     }
+    //返回默认属性对象
+  /*  static get defaultProps(){
+        return {name:'无名'};
+    }*/
+    //检验属性的类型和必填
+   /* static propTypes = {
+
+    }*/
     changeHappy = ()=>{
         this.setState({
             happy: !this.state.happy
@@ -41,10 +49,20 @@ class Person extends React.Component{
         )
     }
 }
+//默认属性对象
+Person.defaultProps = {
+    name:'无名氏'
+}
+//规定了使用此组件时候必须 传入的属性和类型
+//warning.js:36Warning: Failed prop type: The prop `name` is marked as required in `Person`, but its value is `undefined`.
+Person.propTypes = {
+  name:React.PropTypes.string.isRequired
+}
+//warning.js:36Warning: Failed prop type: Invalid prop `name` of type `number` supplied to `Person`, expected `string`.
 /**
  * 1. 把属性封装成一个属性对象 {name:"zfpx"}
  * 2. 把此属性对象传给Person函数，得到返回值虚拟DOM元素
  * 3. 把虚拟DOM元素转成真实DOM元素插入到root内部
  */
-let p = {name:"zfpx",age:8};
+let p = {age:8,name:9};
 ReactDOM.render(<Person {...p}/>,document.getElementById('root'));
